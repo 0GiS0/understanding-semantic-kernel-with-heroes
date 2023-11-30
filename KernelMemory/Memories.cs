@@ -24,6 +24,8 @@ public class MemoryKernel
     {
         await memory.ImportTextAsync("El súper héroe favorito de Gisela es Batman", documentId: "gis01", tags: new TagCollection { { "type", "people" } });
         await memory.ImportTextAsync("La última película que Gisela vio de súper héroes fue Guardianes de la Galaxia Vol. 3 ", documentId: "gis02", tags: new TagCollection { { "type", "people" } });
+        await memory.ImportTextAsync("El súper héroe favorito de Bruno es Invencible", documentId: "bru01", tags: new TagCollection { { "type", "people" } });
+        await memory.ImportTextAsync("La última película que Bruno vio de súper héroes fue Batman de Tim Burton ", documentId: "bru02", tags: new TagCollection { { "type", "people" } });
     }
 
     static async void LoadDocs()
@@ -49,7 +51,7 @@ public class MemoryKernel
         return JsonSerializer.Serialize(new { answer = answer.Result, references = answer.RelevantSources.Select(x => x.SourceName) });
     }
 
-    [SKFunction, Description("Responde preguntas sobre Gisela")]
+    [SKFunction, Description("Responde preguntas sobre Bruno y Gisela")]
     public static async Task<string> AboutMe(string ask)
     {
         var answer = await memory.AskAsync(ask, filter: new MemoryFilter().ByTag("type", "people"));
