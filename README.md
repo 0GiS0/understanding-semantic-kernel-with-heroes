@@ -6,4 +6,7 @@ Este repo contiene la demos de un vídeo que grabé para mi canal de YouTube lla
 
 Para empezar accede al [notebook](notebook.ipynb).
 
+>[!IMPORTANT]
+> Este repositorio tiene más de 2 años por lo que la forma de trabajar de Semantic Kernel ya ha evolucionado.
+
 ¡Nos vemos 👋🏻!
