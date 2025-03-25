@@ -5,14 +5,7 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	// "image": "mcr.microsoft.com/devcontainers/dotnet:1-7.0-bullseye"
 	"build": {
-		"dockerfile": "Dockerfile",
-		"args": {
-			// Update 'VARIANT' to pick a .NET Core version: 3.1, 5.0, 6.0
-			// Append -bullseye or -focal to pin to an OS version.
-			"VARIANT": "7.0",
-			// Options
-			"NODE_VERSION": "16"
-		}
+		"dockerfile": "Dockerfile"		
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -29,7 +22,6 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"workbench.colorTheme": "Default Light Modern",
 				"editor.formatOnSave": true,
 				"files.trimTrailingWhitespace": true
 			},
@@ -52,9 +44,15 @@
 		}
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {
+			"version": "latest",
+			"bicepVersion": "latest"
+		},
 		"powershell": "latest",
-		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {}
+		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"version": "latest"
+		}
 	},
 	"postCreateCommand": "git config --global --add safe.directory /workspaces/understanding-semantic-kernel-with-heroes && pre-commit install"
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.

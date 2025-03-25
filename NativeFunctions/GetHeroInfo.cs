@@ -2,8 +2,7 @@ using System.ComponentModel;
 using System.Globalization;
 using Microsoft.SemanticKernel;
 using System.Net.Http;
-using Newtonsoft.Json.Linq;
-
+using System.Text.Json;
 public class Info
 {
     string apiKey;
@@ -23,10 +22,10 @@ public class Info
         var responseContent = response.Content.ReadAsStringAsync().Result;
 
         // Parse the response
-        var json = JObject.Parse(responseContent);
+        var json = JsonDocument.Parse(responseContent).RootElement;
 
         // Get the hero info
-        var heroInfo = $"{json["results"][0]["biography"]["full-name"]}";
+        var heroInfo = $"{json.GetProperty("results")[0].GetProperty("biography").GetProperty("full-name").GetString()}";
 
         // Return the hero info
         return heroInfo;
